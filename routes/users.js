@@ -7,13 +7,15 @@ usersRouter.get('/', function(req, res, next) {
   res.send('respond with a resource');
 });
 
+usersRouter.get('/signup', function(req, res, next) {
+  res.render('signup', {title: 'Sign up'});
+});
+
+
 /*usersRouter.post('/signup', authController.signup);
 usersRouter.post('/login', authController.login);*/
 
-usersRouter.get('/signup', function(req,res,next) {
-  res.render('signup', { title: 'Signup' });
-  authController.signup;
-});
+usersRouter.post('/signup', authController.signup);
 
 usersRouter.get('/login', function(req,res,next) {
   res.render('login', { title: 'Login' });
