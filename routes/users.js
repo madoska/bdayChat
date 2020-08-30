@@ -7,19 +7,18 @@ usersRouter.get('/', function(req, res, next) {
   res.send('respond with a resource');
 });
 
+// redirect to corerct page
 usersRouter.get('/signup', function(req, res, next) {
-  res.render('signup', {title: 'Sign up'});
+  res.render('signup', {title: 'Signup'});
 });
 
+usersRouter.get('/login', function(req, res, next) {
+  res.render('login', {title: 'Login'});
+});
 
-/*usersRouter.post('/signup', authController.signup);
-usersRouter.post('/login', authController.login);*/
-
+// post data to corresponding controller function
 usersRouter.post('/signup', authController.signup);
 
-usersRouter.get('/login', function(req,res,next) {
-  res.render('login', { title: 'Login' });
-  authController.login;
-});
+usersRouter.post('/login', authController.login);
 
 module.exports = usersRouter;
