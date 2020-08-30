@@ -5,8 +5,8 @@ const signup = async (req, res, next) => {
     const username = req.body.username;
     const password = req.body.password;
 
-    const user = new Users({ username: 'username' });
-    await user.setPassword('password');
+    const user = new Users({ username: username });
+    await user.setPassword(password);
     await user.save().then(result => {
         res.json({
             'status': 'success'
