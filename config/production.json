@@ -1,7 +1,4 @@
 {
-    "Database": {
-        "conn": "mongodb+srv://admin:medina204@cluster0.9hvbj.mongodb.net/<dbname>?retryWrites=true&w=majority"
-    },
     "jwt": {
         "secret": "SuperSecretSecret"
     }
