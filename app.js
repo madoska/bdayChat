@@ -9,7 +9,7 @@ const passport = require('./passport/passport')
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
-const apiUsersRouter = require('./routes/users');
+const chatRouter = require('./routes/chat');
 
 const mongoose = require('mongoose');
 const passportLocalMongoose = require('passport-local-mongoose');
@@ -34,8 +34,9 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(cors());
-app.use('/', passport.authenticate('jwt', { session: false }), indexRouter);
+app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/', passport.authenticate('jwt', { session: false }), chatRouter);
 
 // catch 404 and forward to errondler
 app.use(function (req, res, next) {
