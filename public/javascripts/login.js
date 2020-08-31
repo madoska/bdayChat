@@ -15,8 +15,12 @@ const btnLogin = document.querySelector('.btn').addEventListener('click', functi
         return response.json();
     }).then(json => {
         if (json.status === 'success') {
+            let token = json.data.token;
+            localStorage.setItem('token', token);
+            window.location.href="/views/chat";
+        } else {
             let feedback = document.querySelector('.alert');
-            feedback.textContent = "Login successful!";
+            feedback.textContent = "Login failed!";
             feedback.classList.remove('hidden');
         }
     })
