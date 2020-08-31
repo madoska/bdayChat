@@ -18,7 +18,7 @@ const signup = async (req, res, next) => {
 
             let token = jwt.sign({
                 id: result._id
-            }, "{this is a secret}");
+            }, "Henggarae");
 
             console.log(token);
 
