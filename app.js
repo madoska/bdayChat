@@ -5,7 +5,8 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const cors = require('cors');
 const bodyParser = require('body-parser');
-const passport = require('./passport/passport')
+const passport = require('./passport/passport');
+const config = require('config');
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
@@ -14,7 +15,7 @@ const chatRouter = require('./routes/chat');
 const mongoose = require('mongoose');
 const passportLocalMongoose = require('passport-local-mongoose');
 mongoose.set('useCreateIndex', true);
-mongoose.connect('mongodb://localhost:27017/bdaychat', {
+mongoose.connect(config.get('Database.conn'), {
   useNewUrlParser: true, useUnifiedTopology: true
 });
 
@@ -36,7 +37,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(cors());
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/views', /*passport.authenticate('jwt', { session: false }),*/ chatRouter);
+app.use('/views' /*passport.authenticate('jwt', { session: false })*/, chatRouter);
 
 // catch 404 and forward to errondler
 app.use(function (req, res, next) {
