@@ -17,9 +17,9 @@ const btnSignup = document.querySelector('.btn').addEventListener('click', funct
         return response.json();
     }).then(json => {
         if (json.status === 'success') {
-            let feedback = document.querySelector('.alert');
-            feedback.textContent = "Sign up successful!";
-            feedback.classList.remove('hidden');
+            let token = json.data.token;
+            localStorage.setItem("token", token);
+            window.location.href = "/views/chat";
         }
     })
 })
