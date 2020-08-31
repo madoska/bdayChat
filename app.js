@@ -36,7 +36,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(cors());
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/views/chat', passport.authenticate('jwt', { session: false }), chatRouter);
+app.use('/views', /*passport.authenticate('jwt', { session: false }),*/ chatRouter);
 
 // catch 404 and forward to errondler
 app.use(function (req, res, next) {
