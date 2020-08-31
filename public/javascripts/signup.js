@@ -1,7 +1,7 @@
 const btnSignup = document.querySelector('.btn').addEventListener('click', function () {
-    let username = document.querySelector('#username').value;
-    let password = document.querySelector('#password').value;
-    let bday = document.querySelector('#bday').value;
+    let username = document.querySelector('#username').value.trim();
+    let password = document.querySelector('#password').value.trim();
+    let bday = document.querySelector('#bday').value.trim();
 
     fetch('http://localhost:3000/users/signup', {
         method: "post",
