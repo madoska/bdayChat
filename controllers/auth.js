@@ -18,7 +18,7 @@ const signup = async (req, res, next) => {
 
             let token = jwt.sign({
                 id: result._id
-            }, "Henggarae");
+            }, 'Henggarae');
 
             console.log(token);
 
@@ -38,15 +38,20 @@ const signup = async (req, res, next) => {
 const login = async (req, res, next) => {
     const user = await Users.authenticate()(req.body.username, req.body.password).then(result => {
         if (!result.user) {
-            console.log("wrong login")
-        } else {
-            console.log("okay")
+            return res.json({
+                'status': 'failed',
+                'message': 'Login failed'
+            })
         }
+
+        let token = jwt.sign({
+            id: result.user._id
+        }, 'Henggarae');
 
         return res.json({
             "status": "success",
             "data": {
-                "user": result
+                "token": token
             }
         });
     }).catch(error => {
