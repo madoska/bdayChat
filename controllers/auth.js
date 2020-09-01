@@ -19,7 +19,8 @@ const signup = async (req, res, next) => {
             console.log(result._id);
 
             let token = jwt.sign({
-                id: result._id
+                id: result._id,
+                username : result.username
             }, config.get('jwt.secret'));
 
             console.log(token);
@@ -47,7 +48,8 @@ const login = async (req, res, next) => {
         }
 
         let token = jwt.sign({
-            id: result.user._id
+            id: result._id,
+            username : result.username
         }, config.get('jwt.secret'));
 
         return res.json({
